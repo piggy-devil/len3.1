@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
+// import Store from "../store/";
 import Home from "../views/Home.vue";
-import Login from "../components/layout/TheLogin.vue";
-import Store from "../store/";
+// import Login from "../components/layout/TheLogin.vue";
+import Login from "../views/Login.vue";
+import Products from "../components/layout/products/ProLayout.vue";
 
 const routes = [
   {
@@ -23,6 +25,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+  {
+    path: "/products",
+    name: "Products",
+    component: Products,
+  },
 ];
 
 const router = createRouter({
@@ -30,11 +37,10 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  // if (to.name !== "Login" && !isAuthenticated) next({ name: "Login" });
-  if (to.name !== "Login" && !Store.getters.isAuthenticated) next({ name: "Login" });
-  else if (to.name === "Login" && Store.getters.isAuthenticated) next('/');
-  else next();
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.name !== "Login" && !Store.getters.isAuthenticated) next({ name: "Login" });
+//   else if (to.name === "Login" && Store.getters.isAuthenticated) next('/');
+//   else next();
+// });
 
 export default router;
