@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import Store from "../store/";
+import Store from "../store/";
 import Home from "../views/Home.vue";
 // import Login from "../components/layout/TheLogin.vue";
 import Login from "../views/Login.vue";
@@ -37,10 +37,10 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.name !== "Login" && !Store.getters.isAuthenticated) next({ name: "Login" });
-//   else if (to.name === "Login" && Store.getters.isAuthenticated) next('/');
-//   else next();
-// });
+router.beforeEach((to, from, next) => {
+  if (to.name !== "Login" && !Store.getters.isAuthenticated) next({ name: "Login" });
+  else if (to.name === "Login" && Store.getters.isAuthenticated) next('/');
+  else next();
+});
 
 export default router;
