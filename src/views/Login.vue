@@ -2,14 +2,19 @@
   <div class="min-h-screen w-full p-6 flex justify-center items-center">
     <div class="w-full max-w-xs">
       <div class="bg-white border p-8 shadow rounded w-full mb-6">
-        <div class="text-lg text-center text-gray-600 mb-6">Login to your account</div>
+        <div class="text-lg text-center text-gray-600 mb-6">
+          Login to your account
+        </div>
 
         <form @submit.prevent="submitForm">
           <div class="w-full mx-auto">
-            <div class="flex items-center bg-white rounded shadow-md mb-4">
+            <div
+              class="flex items-center bg-white rounded shadow-md mb-4 text-gray-500 focus-within:text-gray-700"
+            >
               <span class="px-3">
                 <svg
-                  class="fill-current text-gray-500 w-4 h-4"
+                  fill="currentColor"
+                  class="w-4 h-4"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -37,10 +42,13 @@
               Forgotten password?
             </a>
           </div>
-          <div class="flex items-center bg-white rounded shadow-md mb-4">
+          <div
+            class="flex items-center bg-white rounded shadow-md mb-4 text-gray-500 focus-within:text-gray-700"
+          >
             <span class="px-3">
               <svg
-                class="fill-current text-gray-500 w-4 h-4"
+                fill="currentColor"
+                class="w-4 h-4"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
               >
@@ -60,7 +68,8 @@
             <span v-if="form.showPassword" @click="toggle" class="px-3">
               <svg
                 id="eye"
-                class="fill-current text-gray-500 w-5 h-5"
+                fill="currentColor"
+                class="w-5 h-5"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -71,7 +80,8 @@
             <span v-else @click="toggle" class="px-3">
               <svg
                 id="eyeOff"
-                class="fill-current text-gray-500 w-5 h-5"
+                fill="currentColor"
+                class="w-5 h-5"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -85,7 +95,6 @@
                 ></path>
               </svg>
             </span>
-            
           </div>
 
           <div class="pt-1 pb-5 text-sm text-gray-darker font-thin">
@@ -99,10 +108,9 @@
               Remember me</label
             >
           </div>
-
           <button
-            type="submit"
-            class="block w-full bg-blue-600 text-white rounded-sm py-3 text-sm tracking-wide"
+          type="submit"
+            class="block w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-sm shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
           >
             Sign in
           </button>
@@ -123,9 +131,9 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
-import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
+import { reactive } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
   setup() {
     const store = useStore();
@@ -145,7 +153,6 @@ export default {
     }
 
     async function submitForm() {
-
       if (
         form.email === "" ||
         !form.email.includes("@") ||
@@ -165,7 +172,7 @@ export default {
       try {
         if (form.mode === "login") {
           await store.dispatch("login", actionPayload);
-        } 
+        }
 
         const redirectUrl = "/";
         router.replace(redirectUrl);
@@ -175,8 +182,8 @@ export default {
       // form.isLoading = false;
     }
 
-   return { form, submitForm, toggle }
-  }
+    return { form, submitForm, toggle };
+  },
 };
 </script>
 

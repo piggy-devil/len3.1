@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 // import Login from "../components/layout/TheLogin.vue";
 import Login from "../views/Login.vue";
 import Products from "../components/layout/products/ProLayout.vue";
+import Reclips from "../views/products/Reclips.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     name: "Products",
     component: Products,
   },
+  {
+    path: "/reclips",
+    name: "Reclips",
+    component: Reclips
+  }
 ];
 
 const router = createRouter({
